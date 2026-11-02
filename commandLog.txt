@@ -5,4 +5,5 @@ pip install django_bootstrap5
 pip install crispy_bootstrap5
 pip freeze > requirements.txt
 django-admin startproject rolsa 
+cd rolsa
 django-admin startapp website
