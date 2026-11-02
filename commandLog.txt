@@ -7,3 +7,6 @@ pip freeze > requirements.txt
 django-admin startproject rolsa 
 cd rolsa
 django-admin startapp website
+python manage.py makemigrations
+pyhton manage.py migrate
+pyhton manage.py runserver
