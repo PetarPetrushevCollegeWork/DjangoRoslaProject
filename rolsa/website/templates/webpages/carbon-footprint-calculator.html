@@ -1,0 +1,109 @@
+{% extends 'components/base.html' %} {% block title %}Carbon footprint
+calculator{% endblock %}
+
+<span class="visually-hidden"></span>
+
+{% block content %}
+
+<h1>Carbon footprint calculator</h1>
+<p>Enter your details below to get your carbon footprint calculated.</p>
+<form>
+  <div class="row">
+    <div class="d-flex flex-column gap-2 col-lg-6">
+      <div class="d-flex flex-column gap-1">
+        <label class="small" for="milesDrivenByCar">Miles driven by car</label>
+        <input
+          class="rounded-2 p-2 border-1 border"
+          type="number"
+          max="100000"
+          min="0"
+          id="milesDrivenByCar"
+          name="milesDrivenByCar"
+          oninput="updateCarbonFootprint()"
+          required
+          placeholder="1000"
+        />
+      </div>
+      <div class="d-flex flex-column gap-1">
+        <label class="small" for="milesTraveledByPublicTransport"
+          >Miles traveled by public transport</label
+        >
+        <input
+          class="rounded-2 p-2 border-1 border"
+          type="number"
+          max="100000"
+          min="0"
+          id="milesTraveledByPublicTransport"
+          name="milesTraveledByPublicTransport"
+          oninput="updateCarbonFootprint()"
+          required
+          placeholder="1000"
+        />
+      </div>
+      <div class="d-flex flex-column gap-1">
+        <label class="small" for="milesFlown">Miles flown</label>
+        <input
+          class="rounded-2 p-2 border-1 border"
+          type="number"
+          max="100000"
+          min="0"
+          id="milesFlown"
+          name="milesFlown"
+          oninput="updateCarbonFootprint()"
+          required
+          placeholder="1000"
+        />
+      </div>
+      <div class="d-flex flex-column gap-1">
+        <label class="small" for="electricalKwh"
+          >Amount of electicity used (KWH)</label
+        >
+        <input
+          class="rounded-2 p-2 border-1 border"
+          type="number"
+          max="100000"
+          min="0"
+          id="electricalKwh"
+          name="electricalKwh"
+          oninput="updateCarbonFootprint()"
+          required
+          placeholder="1000"
+        />
+      </div>
+      <div class="d-flex flex-column gap-1">
+        <label class="small" for="gasKwh">Amount of gas used (KWH)</label>
+        <input
+          class="rounded-2 p-2 border-1 border"
+          type="number"
+          max="100000"
+          min="0"
+          id="gasKwh"
+          name="gasKwh"
+          oninput="updateCarbonFootprint()"
+          required
+          placeholder="1000"
+        />
+      </div>
+      <div class="d-flex flex-column gap-1">
+        <label class="small" for="dietType">Select your diet type</label>
+        <select
+          class="rounded-2 p-2 border-1 border"
+          id="dietType"
+          name="dietType"
+          oninput="updateCarbonFootprint()"
+          onchange="updateCarbonFootprint()"
+          required
+        >
+          <option selected disabled>Select your diet type</option>
+          <option value="highmeat">High meat eating diet</option>
+          <option value="meat">Standard meat eating diet</option>
+          <option value="vegetarian">Vegetarian diet</option>
+          <option value="vegan">Vegan diet</option>
+        </select>
+      </div>
+      <button class="btn btn-primary my-2 w-100" type="submit">Save</button>
+    </div>
+  </div>
+</form>
+
+{% endblock %}

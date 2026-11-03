@@ -8,7 +8,9 @@
     {% bootstrap_css %}
   </head>
   <body>
-    {% block content %} {% endblock %}
+    <div class="container container-fluid my-2">
+      {% block content %} {% endblock %}
+    </div>
   </body>
   {% bootstrap_javascript %}
 </html>
