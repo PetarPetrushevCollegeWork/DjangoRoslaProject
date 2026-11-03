@@ -7,103 +7,189 @@ calculator{% endblock %}
 
 <h1>Carbon footprint calculator</h1>
 <p>Enter your details below to get your carbon footprint calculated.</p>
-<form>
-  <div class="row">
-    <div class="d-flex flex-column gap-2 col-lg-6">
-      <div class="d-flex flex-column gap-1">
-        <label class="small" for="milesDrivenByCar">Miles driven by car</label>
-        <input
-          class="rounded-2 p-2 border-1 border"
-          type="number"
-          max="100000"
-          min="0"
-          id="milesDrivenByCar"
-          name="milesDrivenByCar"
-          oninput="updateCarbonFootprint()"
-          required
-          placeholder="1000"
-        />
+<div class="row">
+  <div class="col-lg-6 order-lg-0 order-1">
+    <form>
+      <div class="d-flex flex-column gap-2">
+        <div class="d-flex flex-column gap-1">
+          <label class="small" for="milesDrivenByCar"
+            >Miles driven by car</label
+          >
+          <input
+            class="rounded-2 p-2 border-1 border"
+            type="number"
+            max="100000"
+            min="0"
+            id="milesDrivenByCar"
+            name="milesDrivenByCar"
+            oninput="updateCarbonFootprint()"
+            required
+            placeholder="1000"
+            value="0"
+          />
+        </div>
+        <div class="d-flex flex-column gap-1">
+          <label class="small" for="milesTraveledByPublicTransport"
+            >Miles traveled by public transport</label
+          >
+          <input
+            class="rounded-2 p-2 border-1 border"
+            type="number"
+            max="100000"
+            min="0"
+            id="milesTraveledByPublicTransport"
+            name="milesTraveledByPublicTransport"
+            oninput="updateCarbonFootprint()"
+            required
+            placeholder="1000"
+            value="0"
+          />
+        </div>
+        <div class="d-flex flex-column gap-1">
+          <label class="small" for="milesFlown">Miles flown</label>
+          <input
+            class="rounded-2 p-2 border-1 border"
+            type="number"
+            max="100000"
+            min="0"
+            id="milesFlown"
+            name="milesFlown"
+            oninput="updateCarbonFootprint()"
+            required
+            placeholder="1000"
+            value="0"
+          />
+        </div>
+        <div class="d-flex flex-column gap-1">
+          <label class="small" for="electricalKwh"
+            >Amount of electicity used (KWH)</label
+          >
+          <input
+            class="rounded-2 p-2 border-1 border"
+            type="number"
+            max="100000"
+            min="0"
+            id="electricalKwh"
+            name="electricalKwh"
+            oninput="updateCarbonFootprint()"
+            required
+            placeholder="1000"
+            value="0"
+          />
+        </div>
+        <div class="d-flex flex-column gap-1">
+          <label class="small" for="gasKwh">Amount of gas used (KWH)</label>
+          <input
+            class="rounded-2 p-2 border-1 border"
+            type="number"
+            max="100000"
+            min="0"
+            id="gasKwh"
+            name="gasKwh"
+            oninput="updateCarbonFootprint()"
+            required
+            placeholder="1000"
+            value="0"
+          />
+        </div>
+        <div class="d-flex flex-column gap-1">
+          <label class="small" for="dietType">Select your diet type</label>
+          <select
+            class="rounded-2 p-2 border-1 border"
+            id="dietType"
+            name="dietType"
+            oninput="updateCarbonFootprint()"
+            onchange="updateCarbonFootprint()"
+            required
+          >
+            <option selected disabled>Select your diet type</option>
+            <option value="highmeat">High meat eating diet</option>
+            <option value="meat">Standard meat eating diet</option>
+            <option value="vegetarian">Vegetarian diet</option>
+            <option value="vegan">Vegan diet</option>
+          </select>
+        </div>
+        <button class="btn btn-primary my-2 w-100" type="submit">Save</button>
       </div>
-      <div class="d-flex flex-column gap-1">
-        <label class="small" for="milesTraveledByPublicTransport"
-          >Miles traveled by public transport</label
-        >
-        <input
-          class="rounded-2 p-2 border-1 border"
-          type="number"
-          max="100000"
-          min="0"
-          id="milesTraveledByPublicTransport"
-          name="milesTraveledByPublicTransport"
-          oninput="updateCarbonFootprint()"
-          required
-          placeholder="1000"
-        />
-      </div>
-      <div class="d-flex flex-column gap-1">
-        <label class="small" for="milesFlown">Miles flown</label>
-        <input
-          class="rounded-2 p-2 border-1 border"
-          type="number"
-          max="100000"
-          min="0"
-          id="milesFlown"
-          name="milesFlown"
-          oninput="updateCarbonFootprint()"
-          required
-          placeholder="1000"
-        />
-      </div>
-      <div class="d-flex flex-column gap-1">
-        <label class="small" for="electricalKwh"
-          >Amount of electicity used (KWH)</label
-        >
-        <input
-          class="rounded-2 p-2 border-1 border"
-          type="number"
-          max="100000"
-          min="0"
-          id="electricalKwh"
-          name="electricalKwh"
-          oninput="updateCarbonFootprint()"
-          required
-          placeholder="1000"
-        />
-      </div>
-      <div class="d-flex flex-column gap-1">
-        <label class="small" for="gasKwh">Amount of gas used (KWH)</label>
-        <input
-          class="rounded-2 p-2 border-1 border"
-          type="number"
-          max="100000"
-          min="0"
-          id="gasKwh"
-          name="gasKwh"
-          oninput="updateCarbonFootprint()"
-          required
-          placeholder="1000"
-        />
-      </div>
-      <div class="d-flex flex-column gap-1">
-        <label class="small" for="dietType">Select your diet type</label>
-        <select
-          class="rounded-2 p-2 border-1 border"
-          id="dietType"
-          name="dietType"
-          oninput="updateCarbonFootprint()"
-          onchange="updateCarbonFootprint()"
-          required
-        >
-          <option selected disabled>Select your diet type</option>
-          <option value="highmeat">High meat eating diet</option>
-          <option value="meat">Standard meat eating diet</option>
-          <option value="vegetarian">Vegetarian diet</option>
-          <option value="vegan">Vegan diet</option>
-        </select>
-      </div>
-      <button class="btn btn-primary my-2 w-100" type="submit">Save</button>
-    </div>
+    </form>
   </div>
-</form>
+  <div class="col-lg-6 order-lg-1 order-0 my-2">
+    <span class="fs-1" style="display: none" id="carbonFootprintDisplay"
+      >Your carbon footprint is <b id="carbonFootprintValue">...</b> kg.</span
+    >
+    <span id="carbonFootprintWillAppearNote"
+      >Your carbon footprint will appear here...</span
+    >
+  </div>
+</div>
 
+<script>
+  function updateCarbonFootprint() {
+    document.getElementById("carbonFootprintDisplay").style.display = "none";
+    document.getElementById("carbonFootprintWillAppearNote").style.display =
+      "block";
+    // function to validate a min and max
+    function validateBounds(value, min, max) {
+      // Exclusive max, inclusive min
+      if (value > max) {
+        return false;
+      }
+      if (value < min) {
+        return false;
+      }
+      return true;
+    }
+
+    // read the inputs
+    milesDrivenByCar = document.getElementById("milesDrivenByCar").value;
+    milesTraveledByPublicTransport = document.getElementById(
+      "milesTraveledByPublicTransport",
+    ).value;
+    milesFlown = document.getElementById("milesFlown").value;
+    electricalKwh = document.getElementById("electricalKwh").value;
+    gasKwh = document.getElementById("gasKwh").value;
+    dietType = document.getElementById("dietType").value;
+
+    // bulk validation of all int inputs.
+    [
+      milesDrivenByCar,
+      milesTraveledByPublicTransport,
+      milesFlown,
+      electricalKwh,
+      gasKwh,
+    ].forEach((value) => {
+      if (!validateBounds(value, 0, 100000)) {
+        alert("Please check your inputs and try again.");
+        return;
+      }
+    });
+
+    // validate diet
+    if (dietType == "highmeat") {
+      dietMultiplier = 7.2;
+    } else if (dietType == "meat") {
+      dietMultiplier = 5.3;
+    } else if (dietType == "vegetarian") {
+      dietMultiplier = 3.8;
+    } else if (dietType == "vegan") {
+      dietMultiplier = 2.9;
+    } else {
+      // No error message to prevent error on any input before user selects a diet type.
+      return;
+    }
+
+    carbonFootprint =
+      milesDrivenByCar * 0.4 +
+      milesFlown * 0.25 +
+      milesTraveledByPublicTransport * 0.14 +
+      electricalKwh * 0.385 +
+      gasKwh * 0.18 +
+      365 * dietMultiplier;
+
+    document.getElementById("carbonFootprintDisplay").style.display = "block";
+    document.getElementById("carbonFootprintWillAppearNote").style.display =
+      "none";
+    document.getElementById("carbonFootprintValue").innerText = carbonFootprint;
+  }
+</script>
 {% endblock %}
