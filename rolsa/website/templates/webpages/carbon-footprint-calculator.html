@@ -154,6 +154,7 @@ calculator{% endblock %}
     gasKwh = document.getElementById("gasKwh").value;
     dietType = document.getElementById("dietType").value;
 
+    valid = true
     // bulk validation of all int inputs.
     [
       milesDrivenByCar,
@@ -164,9 +165,10 @@ calculator{% endblock %}
     ].forEach((value) => {
       if (!validateBounds(value, 0, 100000)) {
         alert("Please check your inputs and try again.");
-        return;
+        valid = false
       }
     });
+    if(!valid){ return; }
 
     // validate diet
     if (dietType == "highmeat") {
