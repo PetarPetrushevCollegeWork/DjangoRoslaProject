@@ -10,7 +10,8 @@ def carbonFootprintCalculator(request):
     # If get has the query params containing the data then we can save it
     if request.GET.get("calculatedSum"):
         try:
-            float(request.GET.get("calculatedSum"))
+            if (float(request.GET.get("calculatedSum")) < 0):
+                raise ValueError("Carbon footprint cannot be negative")
         except ValueError:
             return render(request, 'webpages/carbon-footprint-calculator.html')
         if request.user.is_authenticated:
@@ -24,6 +25,13 @@ def carbonFootprintCalculator(request):
                     footprintUserID=request.user,
                     carbonFootprint=request.GET.get("calculatedSum"),
                 )
+
+
+    # If the params are not set and the user is logged in and they have a reading add their current reading to their params
+    if request.user.is_authenticated:
+        if carbonFootprint.objects.filter(footprintUserID=request.user).exists():
+            currentReading = carbonFootprint.objects.get(footprintUserID=request.user)
+            return render(request, 'webpages/carbon-footprint-calculator.html', {"previousReading": currentReading.carbonFootprint})
     return render(request, 'webpages/carbon-footprint-calculator.html')
 
 def register(request):

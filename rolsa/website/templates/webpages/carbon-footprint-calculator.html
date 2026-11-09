@@ -196,6 +196,8 @@ calculator{% endblock %}
       "none";
     document.getElementById("carbonFootprintValue").innerText = carbonFootprint;
     document.getElementById("calculatedSum").value = carbonFootprint;
+    document.getElementById("carbonFootprintDisplay").innerHTML =
+      `Your carbon footprint is <b id="carbonFootprintValue">${carbonFootprint}</b> kg.`;
   }
 
   // set all values via get params
@@ -222,5 +224,16 @@ calculator{% endblock %}
     document.getElementById("dietType").value = urlParams.get("dietType");
   }
   updateCarbonFootprint();
+
+  previousReading = "{{previousReading}}";
+  if (previousReading != "") {
+    document.getElementById("carbonFootprintDisplay").style.display = "block";
+    document.getElementById("carbonFootprintWillAppearNote").style.display =
+      "none";
+    document.getElementById("carbonFootprintValue").innerText = previousReading;
+
+    document.getElementById("carbonFootprintDisplay").innerHTML +=
+      "<br>(Previous reading)";
+  }
 </script>
 {% endblock %}
