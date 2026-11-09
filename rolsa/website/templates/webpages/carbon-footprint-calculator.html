@@ -110,7 +110,11 @@ calculator{% endblock %}
           </select>
         </div>
         <input type="hidden" name="calculatedSum" id="calculatedSum" />
+        {% if user.is_authenticated %}
+
         <button class="btn btn-primary my-2 w-100" type="submit">Save</button>
+
+        {% endif %}
       </div>
     </form>
   </div>
