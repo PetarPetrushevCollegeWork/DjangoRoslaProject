@@ -9,7 +9,7 @@ calculator{% endblock %}
 <p>Enter your details below to get your carbon footprint calculated.</p>
 <div class="row">
   <div class="col-lg-6 order-lg-0 order-1">
-    <form>
+    <form method="get">
       <div class="d-flex flex-column gap-2">
         <div class="d-flex flex-column gap-1">
           <label class="small" for="milesDrivenByCar"
@@ -109,11 +109,8 @@ calculator{% endblock %}
             <option value="vegan">Vegan diet</option>
           </select>
         </div>
-        <!--
-        
-        Button removed as saving is not implemented yet.
+        <input type="hidden" name="calculatedSum" id="calculatedSum" />
         <button class="btn btn-primary my-2 w-100" type="submit">Save</button>
-         -->
       </div>
     </form>
   </div>
@@ -198,6 +195,32 @@ calculator{% endblock %}
     document.getElementById("carbonFootprintWillAppearNote").style.display =
       "none";
     document.getElementById("carbonFootprintValue").innerText = carbonFootprint;
+    document.getElementById("calculatedSum").value = carbonFootprint;
   }
+
+  // set all values via get params
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.has("milesDrivenByCar")) {
+    document.getElementById("milesDrivenByCar").value =
+      urlParams.get("milesDrivenByCar");
+  }
+  if (urlParams.has("milesTraveledByPublicTransport")) {
+    document.getElementById("milesTraveledByPublicTransport").value =
+      urlParams.get("milesTraveledByPublicTransport");
+  }
+  if (urlParams.has("milesFlown")) {
+    document.getElementById("milesFlown").value = urlParams.get("milesFlown");
+  }
+  if (urlParams.has("electricalKwh")) {
+    document.getElementById("electricalKwh").value =
+      urlParams.get("electricalKwh");
+  }
+  if (urlParams.has("gasKwh")) {
+    document.getElementById("gasKwh").value = urlParams.get("gasKwh");
+  }
+  if (urlParams.has("dietType")) {
+    document.getElementById("dietType").value = urlParams.get("dietType");
+  }
+  updateCarbonFootprint();
 </script>
 {% endblock %}
