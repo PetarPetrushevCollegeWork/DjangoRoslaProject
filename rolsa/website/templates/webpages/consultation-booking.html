@@ -1,0 +1,9 @@
+{% extends 'components/base.html' %}
+<span class="visually-hidden"></span>
+{% block title %}Consultation Booking{% endblock %} {% block content %}
+<h1>Consultation Booking</h1>
+<form method="post">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit">Save booking</button>
+</form>
+{% endblock %}
